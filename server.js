@@ -1,10 +1,13 @@
-const express = require("express");
+const express = require('express');
+const mongoose = require('mongoose');
+const graphqlRouter = require('./graphqlRouter.js');
+require("dotenv").config();
 const app = express();
 
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome" });
+app.use('/graphql', graphqlRouter);
+
+mongoose.connect(process.env.MONGO_URL, { });
+
+app.listen(5000, () => {
+    console.log('Server is running on http://localhost:5000/graphql');
 });
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`listening to port : http://localhost:${PORT}`);
-})
