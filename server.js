@@ -1,12 +1,12 @@
 const express = require('express');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const graphqlRouter = require('./graphqlRouter.js');
 require("dotenv").config();
 const app = express();
 
 app.use('/graphql', graphqlRouter);
 
-mongoose.connect(process.env.MONGO_URL, { });
+// mongoose.connect(process.env.MONGO_URL, { });
 app.get("/", (req, res) => {
     res.json({
         message:
