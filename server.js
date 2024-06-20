@@ -7,7 +7,12 @@ const app = express();
 app.use('/graphql', graphqlRouter);
 
 mongoose.connect(process.env.MONGO_URL, { });
-
+app.get("/", (req, res) => {
+    res.json({
+        message:
+            "welcome to graphql service ",
+    });
+});
 app.listen(5000, () => {
     console.log('Server is running on http://localhost:5000/graphql');
 });
